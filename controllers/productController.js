@@ -20,7 +20,7 @@ cloudinary.config({
   // Handle Image upload
   let fileData = {};
   if (req.file) {
-    Save image to cloudinary
+    //Save image to cloudinary
     let uploadedFile;
     try {
       uploadedFile = await cloudinary.uploader.upload(req.file.path, {
