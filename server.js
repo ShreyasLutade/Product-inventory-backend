@@ -21,7 +21,7 @@ app.use(
   cors({
     // origin: ["http://localhost:000", "https://pinvent-app.vercel.app"],
     credentials: true,
-    origin:'https://pinvent-dh1inp4sj-shreyaslutade.vercel.app',
+    origin:'https://product-inventory-frontend.vercel.app',
   })
 );
 
