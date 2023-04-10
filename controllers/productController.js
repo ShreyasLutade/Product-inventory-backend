@@ -136,9 +136,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       fileType: req.file.mimetype,
       fileSize: fileSizeFormatter(req.file.size, 2),
     }
-  };
-  });
-
+   };   
   // Update Product
   const updatedProduct = await Product.findByIdAndUpdate(
     { _id: id },
@@ -156,7 +154,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     }
   );
   res.status(200).json(updatedProduct);
-    
+  });
 
 module.exports = {
   createProduct,
