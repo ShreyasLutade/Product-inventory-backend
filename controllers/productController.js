@@ -12,7 +12,11 @@ const createProduct = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
-
+cloudinary.config({
+  cloud_name: "dtxvupf9b",
+  api_key: "994429245913944",
+  api_secret: "ZxPjNi7dAwm_Irb9Hu1Sgt7bWJ0"
+});
   // Handle Image upload
   let fileData = {};
   if (req.file) {
