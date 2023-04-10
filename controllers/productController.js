@@ -137,7 +137,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       fileSize: fileSizeFormatter(req.file.size, 2),
     }
   };
-  
+  });
 
   // Update Product
   const updatedProduct = await Product.findByIdAndUpdate(
@@ -156,7 +156,6 @@ const updateProduct = asyncHandler(async (req, res) => {
     }
   );
   res.status(200).json(updatedProduct);
-  });
     
 
 module.exports = {
