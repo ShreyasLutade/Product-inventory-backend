@@ -155,7 +155,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       runValidators: true,
     }
   );
-
+  });
   res.status(200).json(updatedProduct);
 
 module.exports = {
