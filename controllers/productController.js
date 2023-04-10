@@ -157,7 +157,6 @@ const updateProduct = asyncHandler(async (req, res) => {
   );
 
   res.status(200).json(updatedProduct);
-});
 
 module.exports = {
   createProduct,
