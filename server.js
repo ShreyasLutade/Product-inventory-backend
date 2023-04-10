@@ -26,7 +26,7 @@ app.use(
     allowedHeaders:[
     'Access-Control-Allow-Origin',
     'Content-Type',
-    'Authorization']
+    'Authorization',]
       
   })
 );
