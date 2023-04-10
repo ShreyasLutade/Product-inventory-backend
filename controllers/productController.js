@@ -12,31 +12,27 @@ const createProduct = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
-cloudinary.config({
-  cloud_name: "dtxvupf9b",
-  api_key: "994429245913944",
-  api_secret: "ZxPjNi7dAwm_Irb9Hu1Sgt7bWJ0"
-});
+
   // Handle Image upload
   let fileData = {};
   if (req.file) {
-    //Save image to cloudinary
-    let uploadedFile;
-    try {
-      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Pinvent App",
-        resource_type: "image",
-      });
-      console.log("opopo",uploadedFile)
-    } catch (error) {
-      res.status(500);
-      console.log(error)
-      throw new Error("Image could not be uploaded");
-    }
+    // Save image to cloudinary
+    // let uploadedFile;
+    // try {
+    //   uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+    //     folder: "Pinvent App",
+    //     resource_type: "image",
+    //   });
+    //   console.log("opopo",uploadedFile)
+    // } catch (error) {
+    //   res.status(500);
+    //   console.log(error)
+    //   throw new Error("Image could not be uploaded");
+    // }
 
     fileData = {
       fileName: req.file.originalname,
-      filePath: data.secure_url,
+      filePath: req.file.path,
       fileType: req.file.mimetype,
       fileSize: fileSizeFormatter(req.file.size, 2),
     };
@@ -116,27 +112,29 @@ const updateProduct = asyncHandler(async (req, res) => {
 
   // Handle Image upload
   let fileData = {};
-  if (req.file) {
-    // Save image to cloudinary
-    let uploadedFile;
-    try {
-      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Pinvent App",
-        resource_type: "image",
-      });
-    } catch (error) {
-      res.status(500);
-      throw new Error("Image could not be uploaded");
-    }
-    console.log(req);
+  // if (req.file) {
+  //   // Save image to cloudinary
+  //   let uploadedFile;
+  //   try {
+  //     uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+  //       folder: "Pinvent App",
+  //       resource_type: "image",
+  //     });
+  //   } catch (error) {
+  //     res.status(500);
+  //     throw new Error("Image could not be uploaded");
+  //   }
+    // console.log(req);
     if(req.file){
     fileData = {
       fileName: req.file.originalname,
-      filePath: data.secure_url,
+      filePath: req.file.path,
       fileType: req.file.mimetype,
       fileSize: fileSizeFormatter(req.file.size, 2),
     }
-   };   
+  };
+  
+
   // Update Product
   const updatedProduct = await Product.findByIdAndUpdate(
     { _id: id },
@@ -153,8 +151,9 @@ const updateProduct = asyncHandler(async (req, res) => {
       runValidators: true,
     }
   );
+
   res.status(200).json(updatedProduct);
-  });
+});
 
 module.exports = {
   createProduct,
