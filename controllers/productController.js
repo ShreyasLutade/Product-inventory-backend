@@ -16,19 +16,19 @@ const createProduct = asyncHandler(async (req, res) => {
   // Handle Image upload
   let fileData = {};
   if (req.file) {
-    // Save image to cloudinary
-    // let uploadedFile;
-    // try {
-    //   uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-    //     folder: "Pinvent App",
-    //     resource_type: "image",
-    //   });
-    //   console.log("opopo",uploadedFile)
-    // } catch (error) {
-    //   res.status(500);
-    //   console.log(error)
-    //   throw new Error("Image could not be uploaded");
-    // }
+    Save image to cloudinary
+    let uploadedFile;
+    try {
+      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+        folder: "Pinvent App",
+        resource_type: "image",
+      });
+      console.log("opopo",uploadedFile)
+    } catch (error) {
+      res.status(500);
+      console.log(error)
+      throw new Error("Image could not be uploaded");
+    }
 
     fileData = {
       fileName: req.file.originalname,
@@ -112,19 +112,19 @@ const updateProduct = asyncHandler(async (req, res) => {
 
   // Handle Image upload
   let fileData = {};
-  // if (req.file) {
-  //   // Save image to cloudinary
-  //   let uploadedFile;
-  //   try {
-  //     uploadedFile = await cloudinary.uploader.upload(req.file.path, {
-  //       folder: "Pinvent App",
-  //       resource_type: "image",
-  //     });
-  //   } catch (error) {
-  //     res.status(500);
-  //     throw new Error("Image could not be uploaded");
-  //   }
-    // console.log(req);
+  if (req.file) {
+    // Save image to cloudinary
+    let uploadedFile;
+    try {
+      uploadedFile = await cloudinary.uploader.upload(req.file.path, {
+        folder: "Pinvent App",
+        resource_type: "image",
+      });
+    } catch (error) {
+      res.status(500);
+      throw new Error("Image could not be uploaded");
+    }
+    console.log(req);
     if(req.file){
     fileData = {
       fileName: req.file.originalname,
